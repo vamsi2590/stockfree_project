@@ -1,0 +1,130 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #00c6ff, #0072ff); /* Gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Center the form and make it more 3D-like */
+.container {
+    background-color: #fff;
+    width: 380px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: perspective(600px) rotateX(0deg);
+    transition: transform 0.5s ease;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* Add animation on container to make it appear smoothly */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Style input fields */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    background-color: #f4f4f4;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border: 1px solid #0072ff;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 114, 255, 0.3);
+}
+
+/* Hover effect on buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(45deg, #0072ff, #00c6ff);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+/* Link under the form */
+.signup-link {
+    font-size: 14px;
+    color: #0072ff;
+    margin-top: 20px;
+}
+
+.signup-link a {
+    text-decoration: none;
+    color: #0072ff;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* 3D hover effect on the form container */
+.container:hover {
+    transform: perspective(600px) rotateY(15deg);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    input, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

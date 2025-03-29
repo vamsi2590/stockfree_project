@@ -1,0 +1,49 @@
+{% load custom_filters %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutual Fund Analysis</title>
+    <link rel="stylesheet" href="{% static 'mutual_funds/styles.css' %}">
+</head>
+<body>
+    <h1>Mutual Fund Analysis for {{ symbol }}</h1>
+
+    <form method="get" action="{% url 'analyze_fund' %}">
+        <input type="text" name="symbol" placeholder="Enter Mutual Fund Symbol" value="{{ symbol }}">
+        <button type="submit">Analyze Fund</button>
+    </form>
+
+    {% if data %}
+        <h2>Real-Time Data</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Open</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Close</th>
+                    <th>Volume</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for date, values in data.items %}
+                    <tr>
+                        <td>{{ date }}</td>
+                        <td>{{ values|get_item:'1. open' }}</td>
+                        <td>{{ values|get_item:'2. high' }}</td>
+                        <td>{{ values|get_item:'3. low' }}</td>
+                        <td>{{ values|get_item:'4. close' }}</td>
+                        <td>{{ values|get_item:'5. volume' }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p></p>
+    {% endif %}
+</body>
+</html>

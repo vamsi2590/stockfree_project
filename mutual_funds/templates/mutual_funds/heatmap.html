@@ -1,0 +1,52 @@
+<!-- templates/mutual_funds/heatmap.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutual Fund Performance Heatmap</title>
+    <link rel="stylesheet" href="{% static 'mutual_funds/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Performance Heatmap for {{ symbol }}</h1>
+
+        <!-- Link back to the analyze page -->
+        <a href="{% url 'analyze_fund' %}">Back to Analyze Fund</a>
+
+        <div class="heatmap">
+            <h2>Last 5 Days Data</h2>
+            <img src="{% static 'mutual_funds/heatmap.png' %}" alt="Performance Heatmap">
+        </div>
+
+        <!-- Display fetched data (for debugging or if you want to show more data) -->
+        <h3>Fetched Data (Last 5 Days)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Open</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Close</th>
+                    <th>Volume</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for date, values in data.items %}
+                <tr>
+  <td>{{ date }}</td>
+  <td>{{ values.Open }}</td>
+  <td>{{ values.High }}</td>
+  <td>{{ values.Low }}</td>
+  <td>{{ values.Close }}</td>
+  <td>{{ values.Volume }}</td>
+</tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!-- stock_data.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Data for {{ symbol }}</title>
+</head>
+<body>
+    <h1>Stock Data for {{ symbol }}</h1>
+
+    {% if data %}
+        <table>
+            <tr>
+                <th>Open</th>
+                <th>Close</th>
+                <th>High</th>
+                <th>Low</th>
+                <th>Volume</th>
+            </tr>
+            <tr>
+                <td>{{ data.Open }}</td>
+                <td>{{ data.Close }}</td>
+                <td>{{ data.High }}</td>
+                <td>{{ data.Low }}</td>
+                <td>{{ data.Volume }}</td>
+            </tr>
+        </table>
+    {% elif error %}
+        <p>Error: {{ error }}</p>
+    {% else %}
+        <p>No data available.</p>
+    {% endif %}
+</body>
+</html>
