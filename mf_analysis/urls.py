@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    
     path('mutual_funds/', include('mutual_funds.urls')),  # Ensure mutual_funds URLs are included correctly
 ]
 # urls.py

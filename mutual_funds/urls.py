@@ -18,11 +18,12 @@ urlpatterns = [
     path('performance-heatmap/', views.fund_performance_heatmap, name='fund_performance_heatmap'),
 ]
 # urls.py
+from .views import analyze_fund_view
 from django.contrib import admin
 from django.urls import path
 from mutual_funds import views
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
     path('',views.SignupPage,name='signup'),
     path('login/',views.LoginPage,name='login'),
     path('analyze/', views.analyze_fund_view, name='analyze_fund'),
